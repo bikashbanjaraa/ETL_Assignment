@@ -1,0 +1,4 @@
+google-api-python-client==2.129.0
+pandas==2.0.3
+psycopg2==2.9.9
+seaborn==0.12.2
