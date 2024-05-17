@@ -1,0 +1,26 @@
+name: etl_assignment
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 3' # On wednesday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@main # checkout the repository content
+
+      - name: setup python
+        uses: actions/setup-python@main
+        with:
+          python-version: '3.9' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: etl_assignment
+        run: |
+          python3 YT_data_analysis_ETL.py
