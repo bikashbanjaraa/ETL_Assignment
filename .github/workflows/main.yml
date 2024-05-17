@@ -22,6 +22,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: run code
+      run: |
+          cd dams_etl_assignment
+          python3 YT_data_analysis_ETL.py
+
     - name: Commit and push if changed
       run: |
         git add .
