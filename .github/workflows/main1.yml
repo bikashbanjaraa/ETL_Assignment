@@ -23,5 +23,4 @@ jobs:
           pip install -r requirements.txt
       - name: etl_assignment
         run: |
-          cd dams_etl_assignment
           python3 YT_data_analysis_ETL.py
