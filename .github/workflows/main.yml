@@ -7,38 +7,42 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: checkout repo content
+        uses: actions/checkout@main # checkout the repository content
 
-    - name: setup python
-      uses: actions/setup-python@main
-      with:
+      - name: setup python
+        uses: actions/setup-python@main
+        with:
           python-version: '3.9' # install the python version needed
 
-    - name: install python packages
-      run: |
-        python -m pip install --upgrade pip
-     
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: run code
-      run: |
-          cd dams_etl_assignment
-          python3 YT_data_analysis_ETL.py
+      - name: run ETL script
+        id: etl_step
+        run: |
+          python YT_data_analysis_ETL.py
+          ls -l
 
-    - name: Commit and push if changed
-      run: |
-        git add .
-        git diff
-        git config --local user.email "bkash.banjara@gmail.com"
-        git config --local user.name "bikashbanjaraa"
-        git commit -m "Commit from GitHub Actions" -a || echo "No changes to commit"
-        git push
+      - name: find the generated file
+        id: file_name
+        run: echo "FILE_NAME=$(ls extracted_data_*.csv)" >> $GITHUB_ENV
 
-    - name: Delete old files
-      run: |
-        find . -type f -mtime +10 -exec rm -f {} \;
-        git add .
-        git commit -m "Removed files older than 10 days" -a || echo "No old files to delete"
-        git push
+      - name: upload CSV file
+        uses: actions/upload-artifact@v3
+        with:
+          name: extracted-data
+          path: path/to/downloaded/artifact
+  
+      - name: Commit and push if changed
+        run: |
+          git add .
+          git diff
+          git config --local user.email "bkash.banjara@gmail.com"
+          git config --local user.name "bikashbanjaraa"
+          git commit -m "Commit from GitHub Actions" -a || echo "No changes to commit"
+          git push
+      - name: Delete old files
