@@ -12,6 +12,9 @@ n the good old days, people walked miles to fetch water for their basic needs fr
 As time changed, getting water via the old traditional method was impractical. Our needs also increased; we wanted more water for various purposes. We wanted it automatically and at the same more frequently. The invention of the pipeline system automated the water supply delivery to homes via pipes from various water sources. The concept of Data pipelines is no different from the water pipeline. We have data sources and data consumers, and to connect them, we use data pipelines.
 
 
+![1](https://github.com/bikashbanjaraa/ETL_Assignment/assets/67676675/8986a363-8e88-4b4d-90f9-c3ff01a7d255)
+
+
 
 
 
@@ -31,6 +34,7 @@ ETL pipelines move data in chunks at regular intervals and in batches, and the p
 
 Architecture of ETL Pipeline:
 
+![2](https://github.com/bikashbanjaraa/ETL_Assignment/assets/67676675/56f967ea-d517-4f10-8428-35e0f3bc506a)
 
 
 
@@ -74,10 +78,15 @@ Next we write code and extract data from youtube api and our data .Initially we 
 
 Now we need to load this data to database. I have loaded this data locally in  my machine and for scheduling the task, i have pushed the data to csv file as well. And every time we run this code new csv file with different datetime stamp is created.
 
-Now to load the data, we need to install Postgres and set up the database:
+
+![3](https://github.com/bikashbanjaraa/ETL_Assignment/assets/67676675/57b5093f-7888-4388-af4e-b6b03819fad6)
+
+
+
+Now we have this data and to load the data in db , we need to install Postgres and set up the database:
 	
 
- 	 	 	
+Follow these steps for basic configuration: 	 	
 Create a new PostgreSQL user: 	Open your command-line interface and type the following command:
 
 
@@ -119,6 +128,7 @@ Total_videos bigint);
 
 Now the db and table has been created and inserting the data via python code our database table looks like this:
 
+![ksnip_20240516-163521](https://github.com/bikashbanjaraa/ETL_Assignment/assets/67676675/04309da6-d32c-47a6-b008-d5029079d0e3)
 
 
 
