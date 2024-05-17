@@ -1,4 +1,4 @@
-name: etl_assignment
+name: etl_assignment_schedule
 
 on:
   workflow_dispatch:
