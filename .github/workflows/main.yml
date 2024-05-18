@@ -46,3 +46,8 @@ jobs:
           git commit -m "Commit from GitHub Actions" -a || echo "No changes to commit"
           git push
       - name: Delete old files
+        run: |
+          find . -type f -mtime +10 -exec rm -f {} \;
+          git add .
+          git commit -m "Removed files older than 10 days" -a || echo "No old files to delete"
+          git push
