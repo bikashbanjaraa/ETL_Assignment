@@ -1,6 +1,7 @@
 name: Commit and Clean Up Files
 
 on:
+  workflow_dispatch 
   schedule:
     - cron: '0 22 * * *' # Runs every day at 10 PM
 
